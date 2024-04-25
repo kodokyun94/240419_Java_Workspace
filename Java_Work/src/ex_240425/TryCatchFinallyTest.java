@@ -13,7 +13,9 @@ public class TryCatchFinallyTest {
 			System.out.print(i + ">>");
 			try {
 				n = scanner.nextInt();
-			} catch (InputMismatchException e) {
+//			} catch (InputMismatchException e) {
+				//InputMismatchException의 부모인 Exception만으로도 처리 가능
+			} catch (Exception e) {
 				System.out.println("정수가 아닙니다. 다시 입력 해 주세요");
 				scanner.next();
 				i--;
