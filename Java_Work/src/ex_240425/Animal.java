@@ -55,6 +55,22 @@ public class Animal { // 클래스로 감싸서 캡슐화
 		
 	}
 	
+	//모든 멤버가 속해 있는 생성자
+	public Animal(String name, int age, String[] favoriteFood) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.favoriteFood = favoriteFood;
+	}
+	
+	
+	//매개변수가 아무것도 없는 생성자 만들기
+	public Animal() {
+		
+	}
+	
+	
+	
 }
 
 

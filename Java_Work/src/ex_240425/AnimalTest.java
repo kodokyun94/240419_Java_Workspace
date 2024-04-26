@@ -20,6 +20,25 @@ public class AnimalTest {
 		System.out.println("고양이가 사는 곳 : " + cat1.getPlace());
 		System.out.println("===============================");
 	
+		//큰 타입 = 작은 타입 : 업 캐스팅 
+		//*캐스팅=던지는거
+		Animal ani1 = new Cat();
+		Animal ani2 = new Dinosaur();
+		
+		//형 변환을 하기 전에 크 타입이 맞는지 검사 : instanceof 연산자 활용
+		if (ani1 instanceof Cat) {
+			System.out.println("ani1은 Cat 타입이 맞습니다.");
+			//작은 타입 = 큰 타입 : 다운 캐스팅
+			Cat catTest = (Cat)ani1;
+		}
+		
+		
+		String [] favoriteFood = {"참치캔", "사료"};		
+		Cat cat2 = new Cat("야옹이", 3, favoriteFood, "도균집" );
+		cat2.showInfo();
+		System.out.println("===============================");
+		
+		
 		Pig pig1 = new Pig();
 		pig1.setName("삼겹살");
 		pig1.setAge(5);
