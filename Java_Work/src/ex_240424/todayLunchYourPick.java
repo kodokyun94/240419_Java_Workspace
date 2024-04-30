@@ -27,6 +27,11 @@ public class todayLunchYourPick {
 		scanner.close();
 	}
 
+	public static void recommendFood(Scanner scanner) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	//자바에서 랜덤으로 숫자를 출력 해 주는 클래스랄 하나 가져와서
 	//배열의 갯수가 5개, 인덱스, 0,1,2,3,4
 	//0~4 까지 중 에서, 하나의 정수를 랜덤하게 선택 후,
