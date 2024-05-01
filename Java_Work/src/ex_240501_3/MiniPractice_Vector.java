@@ -39,7 +39,7 @@ public class MiniPractice_Vector {
 				Person person = new Person(userName, foodListVector);
 				vector.add(person);
 				continue;
-				
+
 			} else if (weather.equals("2")) {
 				System.out.println("메뉴 출력>>");
 				for (int i = 0; i < vector.size(); i++) {
@@ -79,7 +79,7 @@ public class MiniPractice_Vector {
 			} else if (weather.equals("4")) {
 				System.out.println("삭제할 사용자 이름을 입력하세요:");
 				String deleteName = scanner.next();
-				
+
 				for (int i = 0; i < vector.size(); i++) {
 					if (vector.get(i).getName().equals(deleteName)) {
 						vector.remove(i);
@@ -88,27 +88,25 @@ public class MiniPractice_Vector {
 				}
 
 				continue;
-			}else if (weather.equals("5")) {
-                System.out.println("삭제할 메뉴 이름을 입력하세요:");
-                String deleteMenu = scanner.next();
-                
-                
-                for (int i = 0; i < vector.size(); i++) {
-                Person person = vector.get(i);
-                Vector<String> person_foodList = person.getFoodList();
-                
-                for (int j = 0; j < person_foodList.size(); j++) {
-                    if (person_foodList.get(j).equals(deleteMenu)) {
-                        person_foodList.remove(j);
-                        
-                        System.out.println(deleteMenu + "이(가) 삭제되었습니다.");
-                      
-                    }
-                }
-                
-   
-            continue;
-        }
+			} else if (weather.equals("5")) {
+				System.out.println("삭제할 메뉴 이름을 입력하세요:");
+				String deleteMenu = scanner.next();
+
+				for (int i = 0; i < vector.size(); i++) {
+					Person person = vector.get(i);
+					Vector<String> person_foodList = person.getFoodList();
+
+					for (int j = 0; j < person_foodList.size(); j++) {
+						if (person_foodList.get(j).equals(deleteMenu)) {
+							person_foodList.remove(j);
+
+							System.out.println(deleteMenu + "이(가) 삭제되었습니다.");
+
+						}
+					}
+
+					continue;
+				}
 			}
 		}
 
