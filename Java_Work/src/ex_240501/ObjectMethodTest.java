@@ -29,7 +29,8 @@ class Person {// 암묵적으로 Object 클래스 상속
 	public String toString() {
 		return "Person [name=" + name + ", email=" + email + "]";
 	}
-
+	
+	
 	public boolean equals(Person person) {
 		if (person.getName() == this.name && person.getEmail() == this.email) {
 			return true;
