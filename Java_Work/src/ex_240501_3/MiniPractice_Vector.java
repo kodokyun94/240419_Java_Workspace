@@ -11,10 +11,10 @@ public class MiniPractice_Vector {
 	// 함수로 분리하기.
 	public static void recommendFood(Scanner scanner, Vector<Person> vector) {
 		while (true) {
-			System.out.println("=================================");
+			System.out.println("==================================================================");
 			System.out.println("오늘 점심 메뉴 무엇을 먹을까요 프로젝트 벡터 버전");
 			System.out.println("1. 메뉴 입력, 2. 메뉴 출력, 3. 검색하기, 4. 이름 삭제, 5. 메뉴 삭제, 6. 종료하기. ");
-			System.out.println("=================================");
+			System.out.println("==================================================================");
 
 			// 순서2-2, 문자열로 날씨를 담을 변수 지정.
 			String weather = scanner.next();
@@ -53,7 +53,7 @@ public class MiniPractice_Vector {
 				}
 				continue;
 			} else if (weather.equals("3")) {
-				System.out.println("검색하기예)라면>>");
+				System.out.println("검색하기" + "예)라면>>");
 				String searchName = scanner.next();
 				Vector<String> search_list = new Vector<String>();
 				for (int i = 0; i < vector.size(); i++) {
@@ -89,25 +89,24 @@ public class MiniPractice_Vector {
 
 				continue;
 			} else if (weather.equals("5")) {
-				System.out.println("삭제할 메뉴 이름을 입력하세요:");
+				System.out.println("삭제할 이름을 입력하세요:");
+				String deleteMemberMenu = scanner.next();
+				System.out.println("삭제할 메뉴를 입력하세요:");
 				String deleteMenu = scanner.next();
 
 				for (int i = 0; i < vector.size(); i++) {
 					Person person = vector.get(i);
-					Vector<String> person_foodList = person.getFoodList();
-
-					for (int j = 0; j < person_foodList.size(); j++) {
-						if (person_foodList.get(j).equals(deleteMenu)) {
-							person_foodList.remove(j);
-
-							System.out.println(deleteMenu + "이(가) 삭제되었습니다.");
-
+					if (person.getName().equals(deleteMemberMenu)) {
+						for (int j = 0; j < person.getFoodList().size(); j++) {
+							if (person.getFoodList().get(j).equals(deleteMenu)) {
+								System.out.println(deleteMenu + "이(가) 삭제되었습니다.");
+								person.getFoodList().remove(j);
+							}
 						}
 					}
-
-					continue;
 				}
 			}
+			continue;
 		}
 
 	}
