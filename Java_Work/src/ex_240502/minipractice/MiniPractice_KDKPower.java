@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import util.LocalDateTimeMake;
+import util.RandomSelectNumber;
 import util.dto.Person;
 
 public class MiniPractice_KDKPower {
@@ -54,8 +55,8 @@ public class MiniPractice_KDKPower {
 			    Set<String> keys = contactMap.keySet(); // 모든 키를 Set 컬렉션에 받아옴
 				Iterator<String> it = keys.iterator(); // Set에 접근하는 Iterator 리턴
 				while (it.hasNext()) {
-				String keys2 = it.next(); // 키
-				System.out.println(contactMap.get(keys2));
+				String key = it.next(); // 키
+				System.out.println(contactMap.get(key));
 				}
 				
 			    continue;
@@ -92,7 +93,7 @@ public class MiniPractice_KDKPower {
 					return;
 				}
 
-				int randomIndex = (int) (Math.random() * contactMap.size());
+				int randomIndex = RandomSelectNumber.selectInt(contactMap.size());
 				String randomName = (String) contactMap.keySet().toArray()[randomIndex];
 				System.out.println("랜덤으로 선택된 멤버: " + randomName);
 			}
