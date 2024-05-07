@@ -3,6 +3,7 @@ package ex_240507;
 import java.awt.Container;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
@@ -14,38 +15,35 @@ import util.RandomSelectNumber;
 import util.dto.Person;
 import util.eventListener.MyMouseListener;
 
-public class MouseEventTest extends JFrame {
+public class MouseEventTest3 extends JFrame {
 	
 	
 	// 반복되는 메서드, hashMap에서 꺼내서 위치 잡는 부분을 
-	public static void setLocationHashMap(HashMap<String, JLabel> hashMap, Container c) {
-		Set<String> keys = hashMap.keySet(); // 모든 키를 Set 컬렉션에 받아옴
-		Iterator<String> it = keys.iterator(); // Set에 접근하는 Iterator 리턴
+	public static void setLocationArrayList(ArrayList<JLabel> arrayList, Container c) {
+		
+		Iterator<JLabel> it = arrayList.iterator(); // Set에 접근하는 Iterator 리턴
 		
 		while (it.hasNext()) {
-			String key = it.next(); // 키
-			JLabel jLabel = hashMap.get(key); // 값
-			jLabel.setSize(50, 20);
+			JLabel iterator = (JLabel)it.next();
+			iterator.setSize(50, 20);
 			
 			// 랜덤한 정수 가지고 오기. 
 			int randomNumber = RandomSelectNumber.selectInt(100);
-			jLabel.setLocation(30 + randomNumber , 30 + randomNumber );
-			c.add(jLabel);
+			iterator.setLocation(30 + randomNumber , 30 + randomNumber );
+			c.add(iterator);
 		}
 	}
 	
 	// 반복되는 메서드, hashMap에서 꺼내서 위치 잡는 부분을 
-		public static void setLocationClickedHashMap(HashMap<String, JLabel> hashMap,int x, int y) {
-			Set<String> keys = hashMap.keySet(); // 모든 키를 Set 컬렉션에 받아옴
-			Iterator<String> it = keys.iterator(); // Set에 접근하는 Iterator 리턴
+		public static void setLocationClickedArrayList(ArrayList<JLabel> arrayList,int x, int y) {
+			Iterator<JLabel> it = arrayList.iterator(); // Set에 접근하는 Iterator 리턴
 			
 			while (it.hasNext()) {
-				String key = it.next(); // 키
-				JLabel jLabel = hashMap.get(key); // 값
+				JLabel iterator = (JLabel)it.next();
 			
 				// 랜덤한 정수 가지고 오기. 
 				int randomNumber = RandomSelectNumber.selectInt(100);
-				jLabel.setLocation(x + randomNumber , y + randomNumber );
+				iterator.setLocation(x + randomNumber , y + randomNumber );
 			
 			}
 		}
@@ -56,7 +54,7 @@ public class MouseEventTest extends JFrame {
 	// 생성자, -> JLabel 이라는 참조형 변수를 받는 매개변수 선언. 
 	// Hello 라는 문자열 라벨도, 인스턴스 임. 
 //	public MouseEventTest(JLabel jaJLabel, JLabel jaJLabel2) {
-	public MouseEventTest(HashMap<String, JLabel> hashMap) {
+	public MouseEventTest3(ArrayList<JLabel> arrayList) {
 
 		setTitle("Mouse 이벤트 예제");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,7 +80,7 @@ public class MouseEventTest extends JFrame {
 					public void mouseClicked(MouseEvent event) {
 						int x = event.getX(); // 마우스의 클릭 좌표 x
 						int y = event.getY(); // 마우스의 클릭 좌표 y
-						setLocationClickedHashMap(hashMap,x,y);
+						setLocationClickedArrayList(arrayList,x,y);
 //						jaJLabel.setLocation(x, y); // (x,y) 위치로 레이블 이동
 //						jaJLabel2.setLocation(x+20, y-30); // (x,y) 위치로 레이블 이동
 						
@@ -122,7 +120,7 @@ public class MouseEventTest extends JFrame {
 		// hashMap 있는 요소를 꺼내서, 
 		// 처음 위치, 크기 지정, 패널에 붙이기
 		// 메서드로 만들어서 재사용. 
-		setLocationHashMap(hashMap, c);
+		setLocationArrayList(arrayList, c);
 		
 		
 //		jaJLabel.setSize(50, 20); // 레이블의 크기 50x20 설정
@@ -153,16 +151,17 @@ public class MouseEventTest extends JFrame {
 		
 		// 5개를 담아서 전달 하는 방법 대해서 모색 1) HashMap, 2) ArrayList 
 		// 1)HashMap
-		HashMap<String,JLabel> hashMap = new HashMap<String, JLabel>();
+		ArrayList<JLabel> arrayList = new ArrayList<JLabel>();
+		
 		// 추가, put 
-		hashMap.put("label1", la);
-		hashMap.put("label2", la2);
-		hashMap.put("label3", la3);
-		hashMap.put("label4", la4);
-		hashMap.put("label5", la5);
+		arrayList.add(la);
+		arrayList.add(la2);
+		arrayList.add(la3);
+		arrayList.add(la4);
+		arrayList.add(la5);
 		
 		
-		MouseEventTest mouseEventTest = new MouseEventTest(hashMap);
+		MouseEventTest3 mouseEventTest = new MouseEventTest3(arrayList);
 
 	}
 
