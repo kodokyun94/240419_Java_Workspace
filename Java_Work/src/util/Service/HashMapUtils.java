@@ -1,4 +1,4 @@
-package util;
+package util.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,6 +15,7 @@ import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
 
+import util.RandomSelectNumber;
 import util.dto.Person;
 
 public class HashMapUtils {
@@ -24,7 +25,7 @@ public class HashMapUtils {
 		Iterator<String> it = keys.iterator(); // Set에 접근하는 Iterator 리턴
 		while (it.hasNext()) {
 			String key = it.next(); // 키
-			Person value = hashMap.get(key); // 값
+			Person value = (Person) hashMap.get(key); // 값
 			System.out.println("(이름: " + value.getName() + ", 연락처 : " + value.getContact() + ", 등록일 : "
 					+ value.getRegisterDate() + ")");
 		}
@@ -50,8 +51,8 @@ public class HashMapUtils {
 	}// 검색 닫기
 
 	// 삭제
-	public static void deleteElem(HashMap<String, Person> hashMap, String deleteName) {
-		hashMap.remove(deleteName);
+	public static void deleteElem(HashMap<String, Person> hashMap, String searchName) {
+		hashMap.remove(searchName);
 //		Set<String> keys = hashMap.keySet(); // 모든 키를 Set 컬렉션에 받아옴
 //		Iterator<String> it = keys.iterator(); // Set에 접근하는 Iterator 리턴
 //
@@ -91,8 +92,6 @@ public class HashMapUtils {
 		HashMap<String, Person> temp = new LinkedHashMap<String, Person>();
 
 		for (Map.Entry<String, Person> entry : list) {
-			
-			
 			temp.put(entry.getKey(), entry.getValue());
 
 		}

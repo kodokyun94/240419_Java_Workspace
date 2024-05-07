@@ -19,7 +19,7 @@ public class Contact_MiniProject_HashMap {
 			System.out.println("1. 입력, 2. 출력(최신날짜순 정렬), 3. 검색 , 4. 삭제, 5. 랜덤 멤버 뽑기, 6. 종료하기. ");
 			System.out.println("=================================");
 
-			// 순서2-2, 문자열로 날씨를 담을 변수 지정.
+		
 			String weather = scanner.next();
 
 			if (weather.equals("6")) {
@@ -47,12 +47,12 @@ public class Contact_MiniProject_HashMap {
 				System.out.println("검색하기 예:이상용>>");
 				String searchName = scanner.next();
 				HashMap<String, Person> search_list = new HashMap<String, Person>();
-
+				//검색 기능 , 함수분리
 				search_list = HashMapUtils.findElem(hashMap, searchName);
 
 				if (!search_list.isEmpty()) {
 					System.out.println("검색된 사용자 : ");
-					//검색 기능 , 함수분리
+					
 					HashMapUtils.showElem(search_list);
 				} else {
 					System.out.println("사용자가 없습니다.");
