@@ -52,6 +52,7 @@ public class TextAreaExMini2 extends JFrame {
 	GridBagConstraints gbc;
 
 	public TextAreaExMini2() {
+		
 		setTitle("텍스트영역 만들기 예제");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = getContentPane();
@@ -76,7 +77,7 @@ public class TextAreaExMini2 extends JFrame {
 		// gbAdd : 메서드 (배치할 요소(버튼,라벨),x(열), y(행), w(가로폭),h(세로높이))
 		gbAdd(id, 0, 0, 1, 1);
 		gbAdd(idField, 1, 0, 3, 1);
-		
+
 		JLabel name = new JLabel("이름 ");
 		nameField = new JTextField(20);
 		// gbAdd : 메서드 (배치할 요소(버튼,라벨),x(열), y(행), w(가로폭),h(세로높이))
@@ -136,8 +137,9 @@ public class TextAreaExMini2 extends JFrame {
 							String name = rs.getString("name");
 							String email = rs.getString("email");
 							String password = rs.getString("password");
-							stringBuffer.append("아이디 : "+id + ", 이름 : " + name + ", 이메일 :  " + email + ", 비밀번호 : " + password + "\n");
-							stringBuffer.toString();	
+							stringBuffer.append("아이디 : " + id + ", 이름 : " + name + ", 이메일 :  " + email + ", 비밀번호 : "
+									+ password + "\n");
+							stringBuffer.toString();
 						}
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -163,24 +165,27 @@ public class TextAreaExMini2 extends JFrame {
 		changeBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				if (event.getSource() == changeBtn) {
+
 					try {
 						Class.forName(driver);
-
 						con = DriverManager.getConnection(url, userid, passwd);
-
-						String sql = "INSERT INTO member501(id,name,email,password)" + "VALUES(,?,?,?)";
-
+						
+						String sql = "UPDATE member501 SET name = ? , email = ?,password = ? where id = ?";
+						
 						pstmt = con.prepareStatement(sql);
-						pstmt.setString(2, nameField.getText());
-						pstmt.setString(3, emailField.getText());
-						pstmt.setString(4, passwordField.getText());
+						pstmt.setString(1, nameField.getText());
+						pstmt.setString(2, emailField.getText());
+						pstmt.setString(3, passwordField.getText());
+						pstmt.setString(4, idField.getText());
+						
+						
+
 						int r = pstmt.executeUpdate();
 
 						if (r > 0) {
-							System.out.println("insert 성공");
-
+							System.out.println("업데이트 성공");
 						} else {
-							System.out.println("insert 실패");
+							System.out.println("업데이트 실패");
 						}
 
 					} catch (Exception e) {
@@ -202,6 +207,8 @@ public class TextAreaExMini2 extends JFrame {
 		DeleteBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				if (event.getSource() == DeleteBtn) {
+					Connection con = null;
+					PreparedStatement pstmt = null;
 					try {
 						Class.forName(driver);
 						con = DriverManager.getConnection(url, userid, passwd);
@@ -209,28 +216,28 @@ public class TextAreaExMini2 extends JFrame {
 						String sql = "DELETE  FROM member501 WHERE id = ?";
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(1, idField.getText());
-		                int r = pstmt.executeUpdate();
+						int r = pstmt.executeUpdate();
 
-		                if (r > 0) {
-		                    System.out.println("삭제 성공");
-		                } else {
-		                    System.out.println("삭제 실패");
-		                }
+						if (r > 0) {
+							System.out.println("삭제 성공");
+						} else {
+							System.out.println("삭제 실패");
+						}
 
-		            } catch (Exception e) {
-		                e.printStackTrace();
-		            } finally {
-		                try {
-		                    if (pstmt != null)
-		                        pstmt.close();
-		                    if (con != null)
-		                        con.close();
-		                } catch (SQLException e) {
-		                    e.printStackTrace();
-		                }
-		            }
-		        }
-		    }
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						try {
+							if (pstmt != null)
+								pstmt.close();
+							if (con != null)
+								con.close();
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}
 		});
 
 		joinBtn.addActionListener(new ActionListener() {
@@ -289,6 +296,8 @@ public class TextAreaExMini2 extends JFrame {
 		gb.setConstraints(c, gbc);
 		gbc.insets = new Insets(2, 2, 2, 2);
 		add(c, gbc);
+		
+		setLocationRelativeTo(null); // 화면 중앙에 표시
 	}// gbAdd
 
 	public static void main(String[] args) {
