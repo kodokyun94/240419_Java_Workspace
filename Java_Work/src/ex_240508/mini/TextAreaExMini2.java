@@ -168,7 +168,7 @@ public class TextAreaExMini2 extends JFrame {
 
 						con = DriverManager.getConnection(url, userid, passwd);
 
-						String sql = "INSERT INTO member501(id,name,email,password)" + "VALUES(?,?,?,?)";
+						String sql = "INSERT INTO member501(id,name,email,password)" + "VALUES(,?,?,?)";
 
 						pstmt = con.prepareStatement(sql);
 						pstmt.setString(2, nameField.getText());
