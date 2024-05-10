@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 
 import ex_240508.mini.TextAreaExMini2;
 
-public class MenuActionEvent extends JFrame {
+public class MainPage extends JFrame {
 	String driver = "oracle.jdbc.driver.OracleDriver"; // 12행 ~ 15행 데이터베이스 접속을 위한 4가지 정보를 String 변수에 저장.
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	String userid = "scott";
@@ -37,7 +37,7 @@ public class MenuActionEvent extends JFrame {
 
 	private JLabel nameJLabel;
 
-	public MenuActionEvent() {
+	public MainPage() {
 		setTitle("Menu 만들기 예제");
 		createMenu(); // 메뉴 생성, 프레임에 삽입
 		setSize(500, 500);
@@ -82,7 +82,7 @@ public class MenuActionEvent extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// 회원가입 창 열기
-				new TextAreaExMini2();
+				new SignUp();
 			}
 		});// 회원가입 끝
 
@@ -190,7 +190,7 @@ public class MenuActionEvent extends JFrame {
 	}// 음료사진 끝
 
 	public static void main(String[] args) {
-		new MenuActionEvent();
+		new MainPage();
 
 	}// 메인 끝
 
